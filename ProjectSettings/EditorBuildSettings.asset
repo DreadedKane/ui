@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Splash.unity
-    guid: 353396fb4afe42c4981e4bfae917df46
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: e3dbdfdda09d44148ac4784a0d6a5e5e
+    path: Assets/HomewreckersStudio/UI/Scenes/Tests/UnitTests.unity
+    guid: c6c3542c615a4e84fa018f878036e9ad
   m_configObjects: {}

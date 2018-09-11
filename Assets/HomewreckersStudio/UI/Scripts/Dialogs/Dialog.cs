@@ -9,33 +9,42 @@ using UnityEngine.UI;
 
 namespace HomewreckersStudio
 {
+    /**
+     * Displays a message with optional buttons.
+     */
     public sealed class Dialog : MonoBehaviour
     {
-        /** The dialog text. */
+        [Header("Required Components")]
+
         [SerializeField]
+        [Tooltip("Used to show and hide the dialog.")]
+        private GameObject m_view;
+
+        [SerializeField]
+        [Tooltip("The text displayed in the dialog.")]
         private Text m_text;
 
-        /** The confirm button text. */
         [SerializeField]
+        [Tooltip("The text displayed on the confirm button.")]
         private Text m_confirmText;
 
-        /** The cancel button text. */
         [SerializeField]
+        [Tooltip("The text displayed on the cancel button.")]
         private Text m_cancelText;
 
-        /** Used to show and hide the confirm button. */
         [SerializeField]
+        [Tooltip("Used to show and hide the confirm button.")]
         private GameObject m_confirmButton;
 
-        /** Used to show and hide the cancel button. */
         [SerializeField]
+        [Tooltip("Used to show and hide the cancel button.")]
         private GameObject m_cancelButton;
 
         /** Invoked when the confirm button is clicked. */
-        private Action m_confirmEvent;
+        private event Action m_confirmEvent;
 
         /** Invoked when the cancel button is clicked. */
-        private Action m_cancelEvent;
+        private event Action m_cancelEvent;
 
         /**
          * Shows the dialog with no buttons.
@@ -47,7 +56,7 @@ namespace HomewreckersStudio
             m_confirmButton.SetActive(false);
             m_cancelButton.SetActive(false);
 
-            gameObject.SetActive(true);
+            m_view.SetActive(true);
         }
 
         /**
@@ -62,7 +71,7 @@ namespace HomewreckersStudio
             m_confirmButton.SetActive(true);
             m_cancelButton.SetActive(false);
 
-            gameObject.SetActive(true);
+            m_view.SetActive(true);
         }
 
         /**
@@ -79,7 +88,7 @@ namespace HomewreckersStudio
             m_confirmButton.SetActive(true);
             m_cancelButton.SetActive(true);
 
-            gameObject.SetActive(true);
+            m_view.SetActive(true);
         }
 
         /**
@@ -87,7 +96,7 @@ namespace HomewreckersStudio
          */
         public void Hide()
         {
-            gameObject.SetActive(false);
+            m_view.SetActive(false);
         }
 
         /**
@@ -98,9 +107,6 @@ namespace HomewreckersStudio
             Hide();
 
             Event.Invoke(m_confirmEvent);
-
-            m_confirmEvent = null;
-            m_cancelEvent = null;
         }
 
         /**
@@ -111,9 +117,6 @@ namespace HomewreckersStudio
             Hide();
 
             Event.Invoke(m_cancelEvent);
-
-            m_confirmEvent = null;
-            m_cancelEvent = null;
         }
 
         /**
